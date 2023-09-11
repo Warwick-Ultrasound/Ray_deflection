@@ -28,7 +28,6 @@ turbRays = calcRay(theta0, v_ave, @turbulent, R, c_l, N, n);
 
 % Plot Image
 figure;
-%drawPipe(R);
 h(1) = plotRays(zeroRays, 'Zero Flow');
 hold on;
 h(2) = plotRays(plugRays, 'Plug');
