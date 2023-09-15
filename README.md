@@ -11,20 +11,21 @@ The purpose of the code is to explore how different flow profiles effect the bea
 3. turbulent.m
 4. zero.m
 5. calcRay.m
-6. DeflectedRaysMain.m
-7. plotRays.m
-8. plotProfiles.m
-9. profilesFigure.m
+6. DeflectedRaysClampOn.m
+7. DeflectedRaysWetted.m
+8. plotRays.m
+9. plotProfiles.m
+10. profilesFigure.m
 
 Files 1 to 3 are functions which take the radial coordinate and cross-section average flow velocity and return the velocity at the requested radial coordinate. File 4 is a fucntion which imitates the form of fucntions 1 to 3, but returns zero everywhere inside the pipe. 
 
 File 5, calcRay, takes the angle of the zero flow ray, the flow speed and profile, the pipe dimensions, and the speed of sound in the liquid, and returns the (y,z) coordinates of the deflected ray following the mathematics detailed in the linked article. 
 
-File 6 is the main script which uses calcray, along with all of the flow profiles, to produce the deflected rays figure in the article and calculate the hydraulic correction factors. 
+Files 6 and 7 are the main scripts which use calcray, along with all of the flow profiles, to produce the deflected rays figures in the article and calculate the hydraulic correction factors. 
 
-Files 7 and 8 are used to plot the figures in file 6.
+Files 8 and 9 are used to plot the figures in file 6.
 
-File 9 is used to create the figure of flow profiles found in the article.
+File 10 is used to create the figure of flow profiles found in the article.
 
 This documentation will not attempt to go through the mathematics of how the rays are calculated, as those details are published in the article. It will instead go through how to use the code in some detail that cannot be included in the article. Below is the full documentation for the code provided.
 
@@ -91,10 +92,14 @@ Calculates the path that the ultrasound ray would take through a given flow prof
 ### Outputs:
 - rays: A struct containing two fields: y and z - these are the vectors of coordinates for plotting the ray.
 
-## DeflectedRaysMain
+## DeflectedRaysClampOn
 
 A script which uses the functions above to calculate and plot the ray paths for the figure in the results section of the article. It then uses the endpoints of the different paths to calculate the hydraulic correction factor for 
 each profile, and checks that the angle the ray exits the fluid is the same as the angle it enters it.
+
+## DeflectedRaysWetted
+
+Similar to DeflectedRaysClampOn but for a meter with wetted transducers, so slightly different method for calculating the correction factors and a different plot.
 
 ## plotRays
 
