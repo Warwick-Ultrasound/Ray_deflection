@@ -19,7 +19,7 @@ function drawTransducers(zeroRay, theta0, h, w)
     x = x+xc;
     y = y+yc;
     hold on;
-    patch(x/1E-3, y/1E-3, [255, 224, 102]/255);
+    patch(x/1E-3, y/1E-3, [255, 224, 102]/255, 'LineWidth', 2);
     hold off
 
     % Now the bottom one
@@ -37,6 +37,6 @@ function drawTransducers(zeroRay, theta0, h, w)
     x = x+xc;
     y = y+yc;
     hold on;
-    patch(x/1E-3, y/1E-3, [255, 224, 102]/255);
+    patch(x/1E-3, y/1E-3, [255, 224, 102]/255, 'LineWidth', 2);
     hold off
 end
