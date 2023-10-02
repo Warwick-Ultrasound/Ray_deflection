@@ -38,7 +38,7 @@ figure;
 ha(1) = plotRays(zeroRays, 'Zero Flow');
 hold on;
 ha(2) = plotRays(slowLam, 'Laminar, $v ='+string(v_ave/5)+"$~ms\textsuperscript{-1}");
-ha(3) = plotRays(plugRays, 'Plug, $v ='+string(v_ave)+"$~ms\textsuperscript{-1}"');
+ha(3) = plotRays(plugRays, 'Plug, $v ='+string(v_ave)+"$~ms\textsuperscript{-1}");
 ha(4) = plotRays(lamRays, 'Laminar, $v ='+string(v_ave)+"$~ms\textsuperscript{-1}");
 ha(5) = plotRays(turbRays, 'Turbulent, $n='+string(n)+'$ , $v ='+string(v_ave)+"$~ms\textsuperscript{-1}");
 drawPipe(zeroRays,theta0, w, R, xlims);
