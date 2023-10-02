@@ -22,4 +22,5 @@ function drawPipe(zeroRay,theta0, w, R, xlims)
     yoff = w/2*sind(theta0);
     line([centre-xoff, centre-w/2*cosd(theta0)]/1E-3, [-R, -R-yoff]/1E-3, 'Color', 'k', 'LineWidth', 2);
 
+
 end

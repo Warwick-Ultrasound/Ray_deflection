@@ -25,26 +25,28 @@ plotProfiles(R, v_ave, n);
 zeroRays = z_path(calcRay(theta0, v_ave, @zero, R, c_l, N, n));
 plugRays = z_path(calcRay(theta0, v_ave, @plug, R, c_l, N, n));
 lamRays = z_path(calcRay(theta0, v_ave, @laminar, R, c_l, N, n));
+slowLam = z_path(calcRay(theta0, v_ave/5, @laminar, R, c_l, N, n));
 turbRays = z_path(calcRay(theta0, v_ave, @turbulent, R, c_l, N, n));
 
 % Dimensions for drawing
-h = 20E-3; % height of transducer body
+h = 60E-3; % height of transducer body
 w = 60E-3; % width of transducer body
-xlims = [-40, 60]*1E-3; % x limits for drawing pipe
+xlims = [-80, 60]*1E-3; % x limits for drawing pipe
 
 % Plot paths
 figure;
 ha(1) = plotRays(zeroRays, 'Zero Flow');
 hold on;
-ha(2) = plotRays(plugRays, 'Plug');
-ha(3) = plotRays(lamRays, 'Laminar');
-ha(4) = plotRays(turbRays, 'Turbulent, $n='+string(n)+'$');
-%yline([-1,1]*R/1E-3, 'LineWidth', 2);
+ha(2) = plotRays(slowLam, 'Laminar, $v ='+string(v_ave/5)+"$~ms\textsuperscript{-1}");
+ha(3) = plotRays(plugRays, 'Plug, $v ='+string(v_ave)+"$~ms\textsuperscript{-1}"');
+ha(4) = plotRays(lamRays, 'Laminar, $v ='+string(v_ave)+"$~ms\textsuperscript{-1}");
+ha(5) = plotRays(turbRays, 'Turbulent, $n='+string(n)+'$ , $v ='+string(v_ave)+"$~ms\textsuperscript{-1}");
 drawPipe(zeroRays,theta0, w, R, xlims);
 hold off;
 drawTransducers(zeroRays, theta0, h, w);
 set(gca, 'FontName', 'Times', 'FontSize', 14);
-legend(ha, 'Location', 'southwest', 'Interpreter', 'latex');
+legend(ha, 'Location', 'west', 'Interpreter', 'latex');
+legend('boxoff');
 xlabel("$z$ /mm", 'Interpreter', 'latex');
 ylabel("$y$ /mm", 'Interpreter', 'latex');
 ylim([-1 1]*1.4*R/1E-3);
