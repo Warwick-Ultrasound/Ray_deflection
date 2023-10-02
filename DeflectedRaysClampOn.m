@@ -15,7 +15,7 @@ c_l = c_water(20); % speed of sound in liquid
 c_T = c_PEEK(20); % speed of sound in transducer wedge % ADD PROPER FN FOR THIS
 theta0 = asind( c_l/c_T*sind(theta_T) ); % angle into water
 N = 1000; % Number of points to calculate rays at
-n = 8; % order of turbulent profile
+n = 7; % order of turbulent profile
 
 % plot profiles
 plotProfiles(R, v_ave, n);
@@ -34,7 +34,7 @@ hold on;
 h(2) = plotRays(slowLam, 'Laminar, $'+string(v_ave/5)+"$~ms\textsuperscript{-1}");
 h(3) = plotRays(plugRays, 'Plug, $'+string(v_ave)+"$~ms\textsuperscript{-1}");
 h(4) = plotRays(lamRays, 'Laminar, $'+string(v_ave)+"$~ms\textsuperscript{-1}");
-h(5) = plotRays(turbRays, 'Turbulent, $n='+string(n)+'$ , $'+string(v_ave)+"$~ms\textsuperscript{-1}");
+h(5) = plotRays(turbRays, 'Turbulent, $n='+string(n)+'$, $'+string(v_ave)+"$~ms\textsuperscript{-1}");
 yline([-1,1]*R/1E-3, 'LineWidth', 2);
 hold off;
 xlim([-10 110]);
