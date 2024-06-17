@@ -1,8 +1,8 @@
 # Ray_deflection
 
-This repository accompanies an article submitted to Elsevier Flow MEasurement & Instrumentation linked here [ADD LINK].
+This repository accompanies an article submitted to Elsevier Flow Measurement & Instrumentation linked here [ADD LINK].
 
-The purpose of the code is to explore how different flow profiles effect the beam in an ultrasonic flowmeter, and what this means for the different ways of thinking about how the transit time difference arises.
+The purpose of the code is to explore how different flow profiles affect the beam in an ultrasonic flowmeter, and what this means for the different ways of thinking about how the transit time difference arises.
 
 # Summary
 
@@ -14,18 +14,22 @@ The purpose of the code is to explore how different flow profiles effect the bea
 6. DeflectedRaysClampOn.m
 7. DeflectedRaysWetted.m
 8. plotRays.m
-9. plotProfiles.m
-10. profilesFigure.m
+9. drawTransducers.m
+10. drawPipe.m
+11. plotProfiles.m
+12. profilesFigure.m
 
-Files 1 to 3 are functions which take the radial coordinate and cross-section average flow velocity and return the velocity at the requested radial coordinate. File 4 is a fucntion which imitates the form of fucntions 1 to 3, but returns zero everywhere inside the pipe. 
+Files 1 to 3 are functions which take the radial coordinate and cross-sectional average flow velocity and return the velocity at the requested radial coordinate. File 4 is a function which imitates the form of functions 1 to 3, but returns zero everywhere inside the pipe. 
 
 File 5, calcRay, takes the angle of the zero flow ray, the flow speed and profile, the pipe dimensions, and the speed of sound in the liquid, and returns the (y,z) coordinates of the deflected ray following the mathematics detailed in the linked article. 
 
-Files 6 and 7 are the main scripts which use calcray, along with all of the flow profiles, to produce the deflected rays figures in the article and calculate the hydraulic correction factors. 
+Files 6 and 7 are the main scripts which use calcRay, along with all of the flow profiles, to produce the deflected rays figures in the article and calculate the hydraulic correction factors. 
 
-Files 8 and 9 are used to plot the figures in file 6.
+Files 8-10 are functions which help to plot the various elements in the ray figures.
 
-File 10 is used to create the figure of flow profiles found in the article.
+File 11 is used to plot the shapes of the profiles used in the main scripts DeflectedRaysClampOn.m and DeflectedRaysWetted.m
+
+File 12 is used to create the figure of flow profiles found in the article.
 
 This documentation will not attempt to go through the mathematics of how the rays are calculated, as those details are published in the article. It will instead go through how to use the code in some detail that cannot be included in the article. Below is the full documentation for the code provided.
 
@@ -115,6 +119,35 @@ Plots the ray struct that is produced by calcRays.
 
 ### Outputs:
 - h: The axes handle to the plot line.
+
+## drawTransducers
+
+```MATLAB
+  drawTransducers(zeroRay, theta0, h, w)
+```
+
+Draws the rectangles representing the transducers in the correct location for the wetted meter.
+
+### Inputs:
+- zeroRay: Struct representing the zero flow ray between the two transducers. Returned by calcRay with v = 0, but should be passed through the function z_path defined in DeflectedRaysWetted first to get the Z path rather than the V path.
+- theta0: The angle between the normal to the transducers and the vertical.
+- h: The height of the transducers.
+- w: The width of the transducers.
+
+## drawPipe
+
+```MATLAB
+  drawPipe(zeroRay,theta0, w, R, xlims)
+```
+
+Draws the pipe for the meter with wetted sensors. This is nontrivial as cutouts need to be left for the sensors.
+
+### Inputs:
+
+- zeroRay: Struct representing the zero flow ray between the two transducers. Returned by calcRay with v = 0, but should be passed through the function z_path defined in DeflectedRaysWetted first to get the Z path rather than the V path.
+- theta0: The angle between the normal to the transducers and the vertical.
+- R: The pipe interior radius.
+- xlims: The horizontal coordinates to which the lines representing the pipe walls will be extended.
 
 ## plotProfiles
 
