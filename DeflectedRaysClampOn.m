@@ -1,7 +1,6 @@
 %{
-Have done the maths more rigorously for the deflected rays, so want to
-start constructing some better code so it can be provided with the paper,
-plus check that the results match up.
+Main script for calculating the deflected rays in a clamp-on
+V-configuration ultrasonic TTD flow meter. 
 %}
 
 clear;
@@ -15,7 +14,7 @@ c_l = c_water(20); % speed of sound in liquid
 c_T = c_PEEK(20); % speed of sound in transducer wedge % ADD PROPER FN FOR THIS
 theta0 = asind( c_l/c_T*sind(theta_T) ); % angle into water
 N = 1000; % Number of points to calculate rays at
-n = 8; % order of turbulent profile
+n = 6; % order of turbulent profile
 
 % plot profiles
 plotProfiles(R, v_ave, n);
